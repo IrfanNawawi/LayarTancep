@@ -1,9 +1,10 @@
-package id.heycoding.layartancep
+package id.heycoding.layartancep.persentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import id.heycoding.layartancep.R
 import id.heycoding.layartancep.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
