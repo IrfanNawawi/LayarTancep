@@ -3,42 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/navigation_dashboard">
 
     <fragment
-        android:id="@+id/dashboardFragment"
+        android:id="@+id/navigation_dashboard"
         android:name="id.heycoding.layartancep.persentation.dashboard.DashboardFragment"
-        android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
-        <action
-            android:id="@+id/action_dashboardFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_dashboardFragment_to_accountFragment"
-            app:destination="@id/accountFragment" />
-    </fragment>
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="id.heycoding.layartancep.persentation.search.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_searchFragment_to_accountFragment"
-            app:destination="@id/accountFragment" />
-        <action
-            android:id="@+id/action_searchFragment_to_dashboardFragment"
-            app:destination="@id/dashboardFragment" />
-    </fragment>
+        android:id="@+id/navigation_award"
+        android:name="id.heycoding.layartancep.persentation.search.AwardFragment"
+        android:label="@string/title_award"
+        tools:layout="@layout/fragment_award" />
+
     <fragment
-        android:id="@+id/accountFragment"
+        android:id="@+id/navigation_account"
         android:name="id.heycoding.layartancep.persentation.account.AccountFragment"
-        android:label="fragment_account"
-        tools:layout="@layout/fragment_account" >
-        <action
-            android:id="@+id/action_accountFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_accountFragment_to_dashboardFragment"
-            app:destination="@id/dashboardFragment" />
-    </fragment>
+        android:label="@string/title_account"
+        tools:layout="@layout/fragment_account" />
 </navigation>
