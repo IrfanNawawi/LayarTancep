@@ -24,15 +24,14 @@ class AccountFragment : Fragment(), AccountFragmentCallback {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _fragmentAccountBinding = FragmentAccountBinding.inflate(inflater, container, false)
-        return fragmentAccountBinding?.root!!
+    ): View? {
+        _fragmentAccountBinding = FragmentAccountBinding.inflate(layoutInflater, container, false)
+        accountAdapter = AccountAdapter(this)
+        return fragmentAccountBinding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        accountAdapter = AccountAdapter(this)
 
         setupObserve()
         setupUI()

@@ -51,6 +51,7 @@ interface TmdbApi {
         @Query("language") language: String
     ): MovieResponse
 
+    // Feature Popular Movie
     @GET("movie/upcoming")
     suspend fun getUpcomingMovie(
         @Query("api_key") apiKey: String,
@@ -73,7 +74,7 @@ interface TmdbApi {
         @Query("language") language: String
     ): DetailMovieResponse
 
-    // Feature Trailer by Movie
+    // Feature Credits by Movie
     @GET("movie/{movie_id}/credits")
     suspend fun getCreditbyMovie(
         @Path("movie_id") movieId: String,

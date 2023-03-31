@@ -52,15 +52,14 @@ class DetailMovieFragment : Fragment(), DetailMovieCallback {
     ): View? {
         _fragmentDetailMovieFragment =
             FragmentDetailMovieBinding.inflate(layoutInflater, container, false)
+        creditAdapter = CreditAdapter(ArrayList())
+        reviewAdapter = ReviewAdapter(ArrayList())
+        trailerAdapter = TrailerAdapter(ArrayList(), this)
         return fragmentDetailMovieFragment?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        creditAdapter = CreditAdapter(ArrayList())
-        reviewAdapter = ReviewAdapter(ArrayList())
-        trailerAdapter = TrailerAdapter(ArrayList(), this)
 
         setupArguments()
         setupObserve()
@@ -155,18 +154,21 @@ class DetailMovieFragment : Fragment(), DetailMovieCallback {
         listMovieTrailerData.clear()
         listMovieTrailerData.addAll(trailerList)
         trailerAdapter.setOnTrailerMovie(listMovieTrailerData)
+        fragmentDetailMovieFragment?.tvTrailerList?.visibility = View.VISIBLE
     }
 
     private fun setupUIReview(reviewList: List<Reviews>) {
         listMovieReviewData.clear()
         listMovieReviewData.addAll(reviewList)
         reviewAdapter.setOnReviewMovie(listMovieReviewData)
+        fragmentDetailMovieFragment?.tvReviewList?.visibility = View.VISIBLE
     }
 
     private fun setupUICredit(creditList: List<Credits>) {
         listMovieCreditData.clear()
         listMovieCreditData.addAll(creditList)
         creditAdapter.setOnCreditMovie(listMovieCreditData)
+        fragmentDetailMovieFragment?.tvCastList?.visibility = View.VISIBLE
     }
 
     private fun setupUIDetail(detailList: List<DetailMovies>) {
@@ -183,6 +185,8 @@ class DetailMovieFragment : Fragment(), DetailMovieCallback {
                 tvGenreOne.text = it.genres[0].name
                 tvGenreTwo.text = it.genres[1].name
                 tvGenreThree.text = it.genres[2].name
+                llGenreMovie.visibility = View.VISIBLE
+                tvVote.visibility = View.VISIBLE
             }
 
             rvMovieCast.apply {
@@ -224,5 +228,15 @@ class DetailMovieFragment : Fragment(), DetailMovieCallback {
                 Uri.parse("vnd.youtube:${trailers.key}")
             )
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupArguments()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragmentDetailMovieFragment = null
     }
 }

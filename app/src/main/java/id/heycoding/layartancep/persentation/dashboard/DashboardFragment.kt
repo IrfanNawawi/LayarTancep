@@ -49,21 +49,19 @@ class DashboardFragment : Fragment(), DashboardCallback {
     ): View? {
         _fragmentDashboardBinding =
             FragmentDashboardBinding.inflate(layoutInflater, container, false)
-
-        dashboardViewModel.apply {
-            getPopularMovie()
-            getUpcomingMovie()
-        }
-
+        bannerAdapter = BannerAdapter(ArrayList())
+        popularAdapter = PopularAdapter(ArrayList(), this)
+        upcomingAdapter = UpcomingAdapter(ArrayList(), this)
         return fragmentDashboardBinding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bannerAdapter = BannerAdapter(ArrayList())
-        popularAdapter = PopularAdapter(ArrayList(), this)
-        upcomingAdapter = UpcomingAdapter(ArrayList(), this)
+        dashboardViewModel.apply {
+            getPopularMovie()
+            getUpcomingMovie()
+        }
 
         setupObserve()
         setupUI()
@@ -84,14 +82,7 @@ class DashboardFragment : Fragment(), DashboardCallback {
                                     .show()
                             }
                             value.upcomingList.isNotEmpty() -> {
-                                fragmentDashboardBinding?.progressBar?.visibility = View.GONE
-                                listUpcomingMovieData.clear()
-                                listUpcomingMovieData.addAll(value.upcomingList)
-                                upcomingAdapter.setOnUpcomingMovie(listUpcomingMovieData)
-
-                                listMovieBannerData.clear()
-                                listMovieBannerData.addAll(value.upcomingList)
-                                bannerAdapter.setBannerData(listUpcomingMovieData)
+                                renderUIUpcoming(value.upcomingList)
                             }
                         }
                         delay(1000)
@@ -109,10 +100,7 @@ class DashboardFragment : Fragment(), DashboardCallback {
                                     .show()
                             }
                             value.popularList.isNotEmpty() -> {
-                                fragmentDashboardBinding?.progressBar?.visibility = View.GONE
-                                listMoviePopularData.clear()
-                                listMoviePopularData.addAll(value.popularList)
-                                popularAdapter.setOnPopularMovie(listMoviePopularData)
+                                renderUIPopular(value.popularList)
                             }
                         }
                         delay(1000)
@@ -120,6 +108,26 @@ class DashboardFragment : Fragment(), DashboardCallback {
                 }
             }
         }
+    }
+
+    private fun renderUIPopular(popularList: List<Movies>) {
+        fragmentDashboardBinding?.progressBar?.visibility = View.GONE
+        fragmentDashboardBinding?.tvMoviePopular?.visibility = View.VISIBLE
+        listMoviePopularData.clear()
+        listMoviePopularData.addAll(popularList)
+        popularAdapter.setOnPopularMovie(listMoviePopularData)
+    }
+
+    private fun renderUIUpcoming(upcomingList: List<Movies>) {
+        fragmentDashboardBinding?.progressBar?.visibility = View.GONE
+        fragmentDashboardBinding?.tvMovieUpcoming?.visibility = View.VISIBLE
+        listUpcomingMovieData.clear()
+        listUpcomingMovieData.addAll(upcomingList)
+        upcomingAdapter.setOnUpcomingMovie(listUpcomingMovieData)
+
+        listMovieBannerData.clear()
+        listMovieBannerData.addAll(upcomingList)
+        bannerAdapter.setBannerData(listUpcomingMovieData)
     }
 
     private fun setupUI() {
@@ -191,6 +199,10 @@ class DashboardFragment : Fragment(), DashboardCallback {
 
     override fun onResume() {
         super.onResume()
+        dashboardViewModel.apply {
+            getPopularMovie()
+            getUpcomingMovie()
+        }
         sliderhandler.postDelayed(sliderRunnable, 3000)
     }
 

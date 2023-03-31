@@ -44,12 +44,7 @@ class AwardFragment : Fragment(), AwardCallback {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _fragmentAwardBinding = FragmentAwardBinding.inflate(layoutInflater, container, false)
-
-        awardViewModel.apply {
-            getGenre()
-            getGenreMovieFetching()
-        }
-
+        genreAdapter = GenreAdapter(ArrayList(), this)
         return fragmentAwardBinding?.root
     }
 
@@ -63,7 +58,11 @@ class AwardFragment : Fragment(), AwardCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        genreAdapter = GenreAdapter(ArrayList(), this)
+
+        awardViewModel.apply {
+            getGenre()
+            getGenreMovieFetching()
+        }
 
         setupObserve()
         setupUI()
@@ -85,6 +84,7 @@ class AwardFragment : Fragment(), AwardCallback {
                             }
                             value.genreList.isNotEmpty() -> {
                                 fragmentAwardBinding?.progressBar?.visibility = View.GONE
+                                fragmentAwardBinding?.llFilter?.visibility = View.VISIBLE
                                 listMovieGenreData.clear()
                                 listMovieGenreData.addAll(value.genreList)
                                 genreAdapter.setOnGenreMovie(listMovieGenreData)
@@ -186,6 +186,14 @@ class AwardFragment : Fragment(), AwardCallback {
         val bundle = Bundle()
         bundle.putParcelable("movie", movie)
         findNavController().navigate(R.id.action_navigation_award_to_detailMovieFragment, bundle)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        awardViewModel.apply {
+            getGenre()
+            getGenreMovieFetching()
+        }
     }
 
     override fun onDestroyView() {
