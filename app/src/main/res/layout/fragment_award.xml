@@ -8,16 +8,13 @@
     tools:context=".persentation.award.AwardFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar_detail"
+        android:id="@+id/appbar_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="11dp"
         android:background="@color/black_300"
         android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="16dp"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_logo_movie" />
         </RelativeLayout>
 
@@ -36,20 +34,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appbar_detail">
+            android:visibility="visible">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edt_search"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="20dp"
-                android:background="@drawable/bg_outline_black"
+                android:background="@drawable/bg_edt_focus"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="8dp"
-                android:hint="Mau cari film apa ?"
+                android:hint="@string/txt_movie_search_hint"
+                android:fontFamily="@font/montserrat_medium_500"
                 android:paddingHorizontal="24dp"
                 android:paddingVertical="12dp"
                 android:textColor="@color/yellow_500"
@@ -64,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/montserrat_medium_500"
                 android:layout_marginVertical="16dp"
                 android:textColor="@color/white_900"
                 android:textSize="16sp"

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">LayarTancep</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_dashboard">Beranda</string>
+    <string name="title_award">Penghargaan</string>
+    <string name="title_account">Akun</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_notifications">Notifikasi</string>
+    <string name="title_darkmode">Aktifkan Mode Malam</string>
+    <string name="title_language">Ganti Bahasa</string>
+    <string name="txt_movie_search_hint">Kamu mau cari film apa ?</string>
+    <string name="txt_movie_search">Cari</string>
+    <string name="txt_movie_popular">Film Populer</string>
+    <string name="txt_movie_upcoming">Yang Akan Datang</string>
+    <string name="txt_movie_banner">Banner Film</string>
+    <string name="txt_movie_dotdetail">Dot Detail Film</string>
+    <string name="txt_movie_cast">Pemeran</string>
+    <string name="txt_movie_trailer">Trailer</string>
+    <string name="txt_movie_review">Review</string>
+    <string name="txt_movie_menu_account">Icon Menu Akun Film</string>
+    <string name="txt_movie_title">Title Film</string>
+    <string name="txt_movie_genre_icon">Image Icon Genre Film</string>
+</resources>

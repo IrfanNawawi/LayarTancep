@@ -1,5 +1,6 @@
 package id.heycoding.layartancep.persentation.award
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -153,6 +154,7 @@ class AwardFragment : Fragment(), AwardCallback {
                     ) {
                     }
 
+                    @SuppressLint("SetTextI18n")
                     override fun onTextChanged(
                         s: CharSequence, start: Int,
                         before: Int, count: Int
@@ -160,7 +162,7 @@ class AwardFragment : Fragment(), AwardCallback {
                         filterMovie(s)
 
                         if (edtSearch.text.toString().isNotEmpty()) {
-                            fragmentAwardBinding?.tvMovieFilter?.text = "Cari ‘${s}’"
+                            fragmentAwardBinding?.tvMovieFilter?.text = "${resources.getString(R.string.txt_movie_search)} '${s}'"
                             fragmentAwardBinding?.tvMovieFilter?.visibility = View.VISIBLE
                         }
                     }
