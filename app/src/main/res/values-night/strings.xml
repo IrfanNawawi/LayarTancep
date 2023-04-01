@@ -20,4 +20,6 @@
     <string name="txt_movie_menu_account">Icon Menu Account Movie</string>
     <string name="txt_movie_title">Title Movie</string>
     <string name="txt_movie_genre_icon">Image Icon Genre Movie</string>
+    <string name="error_not_found">Error: Not Found</string>
+    <string name="error_something_went_wrong">Something went wrong</string>
 </resources>

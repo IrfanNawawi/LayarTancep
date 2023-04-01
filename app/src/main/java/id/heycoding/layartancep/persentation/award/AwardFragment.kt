@@ -34,155 +34,155 @@ class AwardFragment : Fragment(), AwardCallback {
     private var _fragmentAwardBinding: FragmentAwardBinding? = null
     private val fragmentAwardBinding get() = _fragmentAwardBinding
     private val awardViewModel by viewModels<AwardViewModel>()
-    private lateinit var genreAdapter: GenreAdapter
-    private lateinit var genreMovieAdapter: GenreMovieAdapter
-    private val listMovieGenreData = ArrayList<Genres>()
-    private val listSearchMovieData = arrayListOf<Movies>()
-    private var page = 1
-    private var totalPage: Int = 10
+//    private lateinit var genreAdapter: GenreAdapter
+//    private lateinit var genreMovieAdapter: GenreMovieAdapter
+//    private val listMovieGenreData = ArrayList<Genres>()
+//    private val listSearchMovieData = arrayListOf<Movies>()
+//    private var page = 1
+//    private var totalPage: Int = 10
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _fragmentAwardBinding = FragmentAwardBinding.inflate(layoutInflater, container, false)
-        genreAdapter = GenreAdapter(ArrayList(), this)
+//        genreAdapter = GenreAdapter(ArrayList(), this)
         return fragmentAwardBinding?.root
     }
 
     override fun onGenreMovieId(movieId: Genres) {
-        awardViewModel.getGenreMovie(movieId.id.toString(), page.toString())
+//        awardViewModel.getGenreMovie(movieId.id.toString(), page.toString())
     }
-
-    private fun getGenreMovieFetching() {
-        awardViewModel.getGenreMovie("", page.toString())
-    }
+//
+//    private fun getGenreMovieFetching() {
+//        awardViewModel.getGenreMovie("", page.toString())
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        awardViewModel.apply {
-            getGenre()
-            getGenreMovieFetching()
-        }
-
-        setupObserve()
-        setupUI()
+//        awardViewModel.apply {
+//            getGenre()
+//            getGenreMovieFetching()
+//        }
+//
+//        setupObserve()
+//        setupUI()
     }
 
-    private fun setupObserve() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    awardViewModel.listGenreData.collect { value ->
-                        when {
-                            value.isLoading -> {
-                                fragmentAwardBinding?.progressBar?.visibility = View.VISIBLE
-                            }
-                            value.error.isNotBlank() -> {
-                                fragmentAwardBinding?.progressBar?.visibility = View.GONE
-                                Toast.makeText(requireContext(), value.error, Toast.LENGTH_LONG)
-                                    .show()
-                            }
-                            value.genreList.isNotEmpty() -> {
-                                fragmentAwardBinding?.progressBar?.visibility = View.GONE
-                                fragmentAwardBinding?.llFilter?.visibility = View.VISIBLE
-                                listMovieGenreData.clear()
-                                listMovieGenreData.addAll(value.genreList)
-                                genreAdapter.setOnGenreMovie(listMovieGenreData)
-                            }
-                        }
-                        delay(1000)
-                    }
-                }
-                launch {
-                    awardViewModel.listGenreMovieData.collect { value ->
-                        when {
-                            value.isLoading -> {
-                                fragmentAwardBinding?.progressBar?.visibility = View.VISIBLE
-                            }
-                            value.error.isNotBlank() -> {
-                                fragmentAwardBinding?.progressBar?.visibility = View.GONE
-                                Toast.makeText(requireContext(), value.error, Toast.LENGTH_LONG)
-                                    .show()
-                            }
-                            value.genreMovieList.isNotEmpty() -> {
-                                fragmentAwardBinding?.progressBar?.visibility = View.GONE
-                                listSearchMovieData.clear()
-                                listSearchMovieData.addAll(value.genreMovieList)
-                                genreMovieAdapter.notifyDataSetChanged()
-                                genreMovieAdapter.setOnGenreMovie(listSearchMovieData)
-                            }
-                        }
-                        delay(1000)
-                    }
-                }
-            }
-        }
-    }
+//    private fun setupObserve() {
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                launch {
+//                    awardViewModel.listGenreData.collect { value ->
+//                        when {
+//                            value.isLoading -> {
+//                                fragmentAwardBinding?.progressBar?.visibility = View.VISIBLE
+//                            }
+//                            value.error.isNotBlank() -> {
+//                                fragmentAwardBinding?.progressBar?.visibility = View.GONE
+//                                Toast.makeText(requireContext(), value.error, Toast.LENGTH_LONG)
+//                                    .show()
+//                            }
+//                            value.genreList.isNotEmpty() -> {
+//                                fragmentAwardBinding?.progressBar?.visibility = View.GONE
+//                                fragmentAwardBinding?.llFilter?.visibility = View.VISIBLE
+//                                listMovieGenreData.clear()
+//                                listMovieGenreData.addAll(value.genreList)
+//                                genreAdapter.setOnGenreMovie(listMovieGenreData)
+//                            }
+//                        }
+//                        delay(1000)
+//                    }
+//                }
+//                launch {
+//                    awardViewModel.listGenreMovieData.collect { value ->
+//                        when {
+//                            value.isLoading -> {
+//                                fragmentAwardBinding?.progressBar?.visibility = View.VISIBLE
+//                            }
+//                            value.error.isNotBlank() -> {
+//                                fragmentAwardBinding?.progressBar?.visibility = View.GONE
+//                                Toast.makeText(requireContext(), value.error, Toast.LENGTH_LONG)
+//                                    .show()
+//                            }
+//                            value.genreMovieList.isNotEmpty() -> {
+//                                fragmentAwardBinding?.progressBar?.visibility = View.GONE
+//                                listSearchMovieData.clear()
+//                                listSearchMovieData.addAll(value.genreMovieList)
+//                                genreMovieAdapter.notifyDataSetChanged()
+//                                genreMovieAdapter.setOnGenreMovie(listSearchMovieData)
+//                            }
+//                        }
+//                        delay(1000)
+//                    }
+//                }
+//            }
+//        }
+//    }
 
-    private fun setupUI() {
-        genreMovieAdapter = GenreMovieAdapter(ArrayList(), this)
-
-        fragmentAwardBinding?.apply {
-            rvMovieGenre.apply {
-                layoutManager =
-                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                setHasFixedSize(true)
-                adapter = genreAdapter
-                clipToPadding = false
-                clipChildren = false
-                val snapHelper: SnapHelper = LinearSnapHelper()
-                snapHelper.attachToRecyclerView(rvMovieGenre)
-            }
-            rvMovieAward.apply {
-                layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
-                setHasFixedSize(true)
-                adapter = genreMovieAdapter
-                clipToPadding = false
-                clipChildren = false
-            }
-            edtSearch.apply {
-                addTextChangedListener(object : TextWatcher {
-
-                    override fun afterTextChanged(s: Editable) {
-
-                    }
-
-                    override fun beforeTextChanged(
-                        s: CharSequence, start: Int,
-                        count: Int, after: Int
-                    ) {
-                    }
-
-                    @SuppressLint("SetTextI18n")
-                    override fun onTextChanged(
-                        s: CharSequence, start: Int,
-                        before: Int, count: Int
-                    ) {
-                        filterMovie(s)
-
-                        if (edtSearch.text.toString().isNotEmpty()) {
-                            fragmentAwardBinding?.tvMovieFilter?.text = "${resources.getString(R.string.txt_movie_search)} '${s}'"
-                            fragmentAwardBinding?.tvMovieFilter?.visibility = View.VISIBLE
-                        }
-                    }
-                })
-            }
-
-        }
-    }
-
-    private fun filterMovie(s: CharSequence) {
-        val filteredList: ArrayList<Movies> = ArrayList()
-        for (item in listSearchMovieData) {
-            if (item.title.lowercase().contains(s.toString())) filteredList.add(item)
-        }
-
-        if (filteredList.isEmpty()) getGenreMovieFetching()
-        else genreMovieAdapter.filterList(
-            filteredList
-        )
-    }
+//    private fun setupUI() {
+//        genreMovieAdapter = GenreMovieAdapter(ArrayList(), this)
+//
+//        fragmentAwardBinding?.apply {
+//            rvMovieGenre.apply {
+//                layoutManager =
+//                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//                setHasFixedSize(true)
+//                adapter = genreAdapter
+//                clipToPadding = false
+//                clipChildren = false
+//                val snapHelper: SnapHelper = LinearSnapHelper()
+//                snapHelper.attachToRecyclerView(rvMovieGenre)
+//            }
+//            rvMovieAward.apply {
+//                layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+//                setHasFixedSize(true)
+//                adapter = genreMovieAdapter
+//                clipToPadding = false
+//                clipChildren = false
+//            }
+//            edtSearch.apply {
+//                addTextChangedListener(object : TextWatcher {
+//
+//                    override fun afterTextChanged(s: Editable) {
+//
+//                    }
+//
+//                    override fun beforeTextChanged(
+//                        s: CharSequence, start: Int,
+//                        count: Int, after: Int
+//                    ) {
+//                    }
+//
+//                    @SuppressLint("SetTextI18n")
+//                    override fun onTextChanged(
+//                        s: CharSequence, start: Int,
+//                        before: Int, count: Int
+//                    ) {
+//                        filterMovie(s)
+//
+//                        if (edtSearch.text.toString().isNotEmpty()) {
+//                            fragmentAwardBinding?.tvMovieFilter?.text = "${resources.getString(R.string.txt_movie_search)} '${s}'"
+//                            fragmentAwardBinding?.tvMovieFilter?.visibility = View.VISIBLE
+//                        }
+//                    }
+//                })
+//            }
+//
+//        }
+//    }
+//
+//    private fun filterMovie(s: CharSequence) {
+//        val filteredList: ArrayList<Movies> = ArrayList()
+//        for (item in listSearchMovieData) {
+//            if (item.title.lowercase().contains(s.toString())) filteredList.add(item)
+//        }
+//
+//        if (filteredList.isEmpty()) getGenreMovieFetching()
+//        else genreMovieAdapter.filterList(
+//            filteredList
+//        )
+//    }
 
     override fun onDetailAwardMovie(movie: Movies) {
         val bundle = Bundle()
@@ -190,13 +190,13 @@ class AwardFragment : Fragment(), AwardCallback {
         findNavController().navigate(R.id.action_navigation_award_to_detailMovieFragment, bundle)
     }
 
-    override fun onResume() {
-        super.onResume()
-        awardViewModel.apply {
-            getGenre()
-            getGenreMovieFetching()
-        }
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        awardViewModel.apply {
+//            getGenre()
+//            getGenreMovieFetching()
+//        }
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

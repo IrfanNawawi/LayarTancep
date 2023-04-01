@@ -1,11 +1,14 @@
 package id.heycoding.layartancep.di
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import id.heycoding.layartancep.BuildConfig
-import id.heycoding.layartancep.data.remote.MovieRepositoryImpl
+import id.heycoding.layartancep.data.MovieRepositoryImpl
+import id.heycoding.layartancep.data.remote.MovieRemoteDataSource
+import id.heycoding.layartancep.data.remote.services.AuthInterceptor
 import id.heycoding.layartancep.data.remote.services.TmdbApi
 import id.heycoding.layartancep.domain.repository.MovieRepository
 import id.heycoding.layartancep.utils.Constants
@@ -26,6 +29,7 @@ object NetworkModule {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(AuthInterceptor(Constants.API_KEY_TMDB, Constants.LANGUAGE))
             .build()
     } else {
         OkHttpClient
@@ -44,10 +48,4 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideApiService(retrofit: Retrofit) = retrofit.create(TmdbApi::class.java)
-
-    @Singleton
-    @Provides
-    fun provideMovieRepository(api: TmdbApi): MovieRepository {
-        return MovieRepositoryImpl(api)
-    }
 }

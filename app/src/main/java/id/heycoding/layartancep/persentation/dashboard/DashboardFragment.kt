@@ -60,7 +60,7 @@ class DashboardFragment : Fragment(), DashboardCallback {
 
         dashboardViewModel.apply {
             getPopularMovie()
-            getUpcomingMovie()
+//            getUpcomingMovie()
         }
 
         setupObserve()
@@ -70,24 +70,24 @@ class DashboardFragment : Fragment(), DashboardCallback {
     private fun setupObserve() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    dashboardViewModel.listUpcomingData.collect { value ->
-                        when {
-                            value.isLoading -> {
-                                fragmentDashboardBinding?.progressBar?.visibility = View.VISIBLE
-                            }
-                            value.error.isNotBlank() -> {
-                                fragmentDashboardBinding?.progressBar?.visibility = View.GONE
-                                Toast.makeText(requireContext(), value.error, Toast.LENGTH_LONG)
-                                    .show()
-                            }
-                            value.upcomingList.isNotEmpty() -> {
-                                renderUIUpcoming(value.upcomingList)
-                            }
-                        }
-                        delay(1000)
-                    }
-                }
+//                launch {
+//                    dashboardViewModel.listUpcomingData.collect { value ->
+//                        when {
+//                            value.isLoading -> {
+//                                fragmentDashboardBinding?.progressBar?.visibility = View.VISIBLE
+//                            }
+//                            value.error.isNotBlank() -> {
+//                                fragmentDashboardBinding?.progressBar?.visibility = View.GONE
+//                                Toast.makeText(requireContext(), value.error, Toast.LENGTH_LONG)
+//                                    .show()
+//                            }
+//                            value.upcomingList.isNotEmpty() -> {
+//                                renderUIUpcoming(value.upcomingList)
+//                            }
+//                        }
+//                        delay(1000)
+//                    }
+//                }
                 launch {
                     dashboardViewModel.listPopularData.collect { value ->
                         when {
@@ -118,46 +118,46 @@ class DashboardFragment : Fragment(), DashboardCallback {
         popularAdapter.setOnPopularMovie(listMoviePopularData)
     }
 
-    private fun renderUIUpcoming(upcomingList: List<Movies>) {
-        fragmentDashboardBinding?.progressBar?.visibility = View.GONE
-        fragmentDashboardBinding?.tvMovieUpcoming?.visibility = View.VISIBLE
-        listUpcomingMovieData.clear()
-        listUpcomingMovieData.addAll(upcomingList)
-        upcomingAdapter.setOnUpcomingMovie(listUpcomingMovieData)
-
-        listMovieBannerData.clear()
-        listMovieBannerData.addAll(upcomingList)
-        bannerAdapter.setBannerData(listUpcomingMovieData)
-    }
+//    private fun renderUIUpcoming(upcomingList: List<Movies>) {
+//        fragmentDashboardBinding?.progressBar?.visibility = View.GONE
+//        fragmentDashboardBinding?.tvMovieUpcoming?.visibility = View.VISIBLE
+//        listUpcomingMovieData.clear()
+//        listUpcomingMovieData.addAll(upcomingList)
+//        upcomingAdapter.setOnUpcomingMovie(listUpcomingMovieData)
+//
+//        listMovieBannerData.clear()
+//        listMovieBannerData.addAll(upcomingList)
+//        bannerAdapter.setBannerData(listUpcomingMovieData)
+//    }
 
     private fun setupUI() {
         fragmentDashboardBinding?.apply {
-            vpBannerDashboard.apply {
-                adapter = bannerAdapter
-
-                offscreenPageLimit = 3
-                clipToPadding = false
-                clipChildren = false
-
-                val compositePageTransformer = CompositePageTransformer()
-                compositePageTransformer.addTransformer(MarginPageTransformer(30))
-                compositePageTransformer.addTransformer { page, position ->
-                    val r = 1 - kotlin.math.abs(position)
-                    page.scaleY = 0.85f + r * 0.25f
-                }
-
-                setPageTransformer(compositePageTransformer)
-
-                vpBannerDashboard.registerOnPageChangeCallback(object :
-                    ViewPager2.OnPageChangeCallback() {
-                    override fun onPageSelected(position: Int) {
-                        super.onPageSelected(position)
-                        sliderhandler.removeCallbacks(sliderRunnable)
-                        sliderhandler.postDelayed(sliderRunnable, 5000)
-                    }
-                })
-                getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-            }
+//            vpBannerDashboard.apply {
+//                adapter = bannerAdapter
+//
+//                offscreenPageLimit = 3
+//                clipToPadding = false
+//                clipChildren = false
+//
+//                val compositePageTransformer = CompositePageTransformer()
+//                compositePageTransformer.addTransformer(MarginPageTransformer(30))
+//                compositePageTransformer.addTransformer { page, position ->
+//                    val r = 1 - kotlin.math.abs(position)
+//                    page.scaleY = 0.85f + r * 0.25f
+//                }
+//
+//                setPageTransformer(compositePageTransformer)
+//
+//                vpBannerDashboard.registerOnPageChangeCallback(object :
+//                    ViewPager2.OnPageChangeCallback() {
+//                    override fun onPageSelected(position: Int) {
+//                        super.onPageSelected(position)
+//                        sliderhandler.removeCallbacks(sliderRunnable)
+//                        sliderhandler.postDelayed(sliderRunnable, 5000)
+//                    }
+//                })
+//                getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+//            }
 
             rvMoviePopular.apply {
                 layoutManager =
@@ -170,23 +170,23 @@ class DashboardFragment : Fragment(), DashboardCallback {
                 snapHelper.attachToRecyclerView(rvMoviePopular)
             }
 
-            rvMovieUpcoming.apply {
-                layoutManager =
-                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                setHasFixedSize(true)
-                adapter = upcomingAdapter
-                clipToPadding = false
-                clipChildren = false
-                val snapHelper: SnapHelper = LinearSnapHelper()
-                snapHelper.attachToRecyclerView(rvMovieUpcoming)
-            }
+//            rvMovieUpcoming.apply {
+//                layoutManager =
+//                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//                setHasFixedSize(true)
+//                adapter = upcomingAdapter
+//                clipToPadding = false
+//                clipChildren = false
+//                val snapHelper: SnapHelper = LinearSnapHelper()
+//                snapHelper.attachToRecyclerView(rvMovieUpcoming)
+//            }
         }
     }
 
-    private val sliderRunnable = Runnable {
-        fragmentDashboardBinding?.vpBannerDashboard?.currentItem =
-            fragmentDashboardBinding?.vpBannerDashboard?.currentItem?.plus(1)!!
-    }
+//    private val sliderRunnable = Runnable {
+//        fragmentDashboardBinding?.vpBannerDashboard?.currentItem =
+//            fragmentDashboardBinding?.vpBannerDashboard?.currentItem?.plus(1)!!
+//    }
 
     override fun onDetailMovie(movie: Movies) {
         val bundle = Bundle()
@@ -201,14 +201,14 @@ class DashboardFragment : Fragment(), DashboardCallback {
         super.onResume()
         dashboardViewModel.apply {
             getPopularMovie()
-            getUpcomingMovie()
+//            getUpcomingMovie()
         }
-        sliderhandler.postDelayed(sliderRunnable, 3000)
+//        sliderhandler.postDelayed(sliderRunnable, 3000)
     }
 
     override fun onPause() {
         super.onPause()
-        sliderhandler.postDelayed(sliderRunnable, 3000)
+//        sliderhandler.postDelayed(sliderRunnable, 3000)
     }
 
     override fun onDestroyView() {

@@ -34,12 +34,5 @@
         android:id="@+id/detailMovieFragment"
         android:name="id.heycoding.layartancep.persentation.detail.DetailMovieFragment"
         android:label="DetailMovieFragment"
-        tools:layout="@layout/fragment_detail_movie">
-        <action
-            android:id="@+id/action_detailMovieFragment_to_navigation_dashboard"
-            app:destination="@id/navigation_dashboard" />
-        <action
-            android:id="@+id/action_detailMovieFragment_to_navigation_award"
-            app:destination="@id/navigation_award" />
-    </fragment>
+        tools:layout="@layout/fragment_detail_movie"/>
 </navigation>

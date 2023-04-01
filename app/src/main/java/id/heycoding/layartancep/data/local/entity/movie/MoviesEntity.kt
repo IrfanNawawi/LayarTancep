@@ -1,13 +1,16 @@
-package id.heycoding.layartancep.domain.model.movie
+package id.heycoding.layartancep.data.local.entity.movie
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import androidx.annotation.NonNull
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Parcelize
-data class Movies(
+@Entity(tableName = "movies")
+data class MoviesEntity(
+    @NonNull
+    @PrimaryKey
+    val id: Int,
     val adult: Boolean,
     val backdropPath: String,
-    val id: Int,
     val originalLanguage: String,
     val originalTitle: String,
     val overview: String,
@@ -18,4 +21,4 @@ data class Movies(
     val video: Boolean,
     val voteAverage: Double,
     val voteCount: Int
-) : Parcelable
+)
