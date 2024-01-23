@@ -6,8 +6,7 @@ LayarTancep is a Entertainment app for study case built completely using Kotlin.
 </p>
 
 <p align="center">
-  <img src="https://miro.medium.com/v2/resize:fit:772/0*sfCDEb571WD-7EfP.jpg" width:30px;
-            height:50px;/>
+  <img src="https://miro.medium.com/v2/resize:fit:772/0*sfCDEb571WD-7EfP.jpg" style="width:30px;height:50px;"/>
 </p>
 
 ## Tech Stack
