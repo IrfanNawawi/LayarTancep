@@ -35,8 +35,7 @@ object Libraries {
         const val gson = "2.9.0"
         const val retrofit = "2.9.0"
 
-        const val hiltAndroid = "2.44"
-        const val hiltAndroidx = "1.0.0"
+        const val koin = "3.2.0"
 
         const val navigationComponent = "2.5.3"
         const val roundedImageView = "2.3.0"
@@ -62,8 +61,6 @@ object Libraries {
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
     const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
 
-    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    const val hdodenhof = "de.hdodenhof:circleimageview:${Versions.hdodenhof}"
     const val shimmer = "com.facebook.shimmer:shimmer:${Versions.shimmer}"
 
     const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
@@ -76,15 +73,11 @@ object Libraries {
     const val retrofit2 = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
 
-    const val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hiltAndroid}"
-    const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hiltAndroid}"
-    const val androidxHiltCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltAndroidx}"
+    const val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
 
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigationComponent}"
     const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigationComponent}"
     const val navigationDynamic = "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navigationComponent}"
-
-    const val roundedImage = "com.makeramen:roundedimageview:${Versions.roundedImageView}"
 
     const val chucker = "com.github.chuckerteam.chucker:library:${Versions.chucker}"
     const val chuckerNoOp = "com.github.chuckerteam.chucker:library-no-op:${Versions.chucker}"
