@@ -16,3 +16,4 @@ rootProject.name = "LayarTancep"
 include ':app'
 include ':styling'
 include ':core'
+include ':shared'

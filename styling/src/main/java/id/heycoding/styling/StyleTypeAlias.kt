@@ -9,6 +9,5 @@ package id.heycoding.styling
 typealias ProjectString = R.string
 typealias ProjectDrawable = R.drawable
 typealias ProjectColor = R.color
-typealias ProjectArray = R.array
 typealias ProjectLayout = R.layout
-typealias ProjectMenu = R.menu
+typealias ProjectArray = R.array

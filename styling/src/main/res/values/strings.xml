@@ -9,4 +9,9 @@
 
     <string name="message_error_no_internet">Something is wrong with internet connection\nMake sure you have an Internet Connection and try again.</string>
     <string name="message_error_unknown">Something is wrong when fetch data\nPlease try again</string>
+
+    <string-array name="gender_list">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>
