@@ -1,5 +1,8 @@
 package id.heycoding.layartancep.router
 
+import android.content.Context
+import android.content.Intent
+import id.heycoding.home.HomeActivity
 import id.heycoding.shared.router.ActivityRouter
 
 
@@ -9,4 +12,7 @@ import id.heycoding.shared.router.ActivityRouter
  * heycoding@gmail.com
  */
 class ActivityRouterImpl: ActivityRouter {
+    override fun homeActivity(context: Context): Intent {
+        return Intent(context, HomeActivity::class.java)
+    }
 }
