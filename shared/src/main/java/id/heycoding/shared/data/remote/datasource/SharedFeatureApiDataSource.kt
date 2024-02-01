@@ -1,7 +1,7 @@
 package id.heycoding.shared.data.remote.datasource
 
-import id.heycoding.shared.data.model.request.DetailMovieRequest
-import id.heycoding.shared.data.model.response.MovieResponse
+import id.heycoding.shared.data.remote.model.request.DetailMovieRequest
+import id.heycoding.shared.data.remote.model.response.MovieResponse
 import id.heycoding.shared.data.remote.services.SharedFeatureApi
 
 

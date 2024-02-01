@@ -20,7 +20,7 @@ class NetworkClient(val chuckerInterceptor: ChuckerInterceptor) {
         val authInterceptor = Interceptor {
             val requestBuilder = it.request().newBuilder()
             runBlocking {
-                requestBuilder.addHeader("Authorization", "Beare ${BuildConfig.AUTH_TOKEN}")
+                requestBuilder.addHeader("Authorization", "Bearer ${BuildConfig.AUTH_TOKEN}")
             }
             it.proceed(requestBuilder.build())
         }

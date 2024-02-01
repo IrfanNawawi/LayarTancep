@@ -2,7 +2,7 @@ package id.heycoding.shared.utils
 
 import android.content.Context
 import android.content.Intent
-import id.heycoding.shared.data.model.viewparam.MovieViewParam
+import id.heycoding.shared.data.remote.model.viewparam.MovieViewParam
 import id.heycoding.styling.ProjectDrawable
 
 

@@ -3,8 +3,8 @@ package id.heycoding.shared.domain
 import id.heycoding.core.base.BaseUseCase
 import id.heycoding.core.wrapper.DataResource
 import id.heycoding.core.wrapper.ViewResource
-import id.heycoding.shared.data.model.mapper.MovieMapper
-import id.heycoding.shared.data.model.viewparam.MovieViewParam
+import id.heycoding.shared.data.remote.model.mapper.MovieMapper
+import id.heycoding.shared.data.remote.model.viewparam.MovieViewParam
 import id.heycoding.shared.data.repository.SharedApiRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow

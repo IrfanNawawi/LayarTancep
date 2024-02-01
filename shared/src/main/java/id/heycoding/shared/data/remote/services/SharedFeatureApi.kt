@@ -1,7 +1,7 @@
 package id.heycoding.shared.data.remote.services
 
-import id.heycoding.shared.data.model.request.DetailMovieRequest
-import id.heycoding.shared.data.model.response.MovieResponse
+import id.heycoding.shared.data.remote.model.request.DetailMovieRequest
+import id.heycoding.shared.data.remote.model.response.MovieResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -12,6 +12,6 @@ import retrofit2.http.Path
  * heycoding@gmail.com
  */
 interface SharedFeatureApi {
-    @GET("movie/{movie_id}?language=en-US")
+    @GET("movie/{movie_id}")
     suspend fun detailMovie(@Path("movie_id") movieId: DetailMovieRequest): MovieResponse
 }

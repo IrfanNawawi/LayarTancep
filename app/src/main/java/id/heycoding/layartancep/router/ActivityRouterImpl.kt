@@ -2,7 +2,7 @@ package id.heycoding.layartancep.router
 
 import android.content.Context
 import android.content.Intent
-import id.heycoding.home.HomeActivity
+import id.heycoding.home.presentation.ui.home.HomeActivity
 import id.heycoding.shared.router.ActivityRouter
 
 

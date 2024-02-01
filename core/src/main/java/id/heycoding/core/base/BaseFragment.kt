@@ -17,7 +17,9 @@ import java.lang.Exception
  * heycoding.tech
  * heycoding@gmail.com
  */
-abstract class BaseFragment<B: ViewBinding, VM: ViewModel>(val bindingFactory: (LayoutInflater, ViewGroup?, Boolean) -> B) : Fragment() {
+abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(
+    val bindingFactory: (LayoutInflater, ViewGroup?, Boolean) -> B
+) : Fragment() {
 
     protected lateinit var binding: B
     protected abstract val viewModel: VM
@@ -33,15 +35,17 @@ abstract class BaseFragment<B: ViewBinding, VM: ViewModel>(val bindingFactory: (
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = bindingFactory(layoutInflater, container, false)
+        binding = bindingFactory(layoutInflater,container,false)
         return binding.root
     }
 
     abstract fun initView()
 
-    private fun observeData() {}
+    open fun observeData() {
 
-    fun showError(isErrorEnabled: Boolean, exception: Exception) {
+    }
+
+    open fun showError(isErrorEnabled: Boolean, exception: Exception) {
         if (isErrorEnabled) {
             Toast.makeText(requireContext(), requireContext().getErrorMessageByException(exception), Toast.LENGTH_SHORT).show()
         }
