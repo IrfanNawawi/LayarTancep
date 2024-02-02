@@ -1,0 +1,30 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="id.heycoding.splashscreen" >
+4
+5    <uses-sdk android:minSdkVersion="21" />
+6
+7    <application>
+7-->/Users/itdag/AndroidStudioProjects/LayarTancep/feature/splashscreen/src/main/AndroidManifest.xml:4:5-14:19
+8        <activity
+8-->/Users/itdag/AndroidStudioProjects/LayarTancep/feature/splashscreen/src/main/AndroidManifest.xml:5:9-13:20
+9            android:name="id.heycoding.splashscreen.SplashScreenActivity"
+9-->/Users/itdag/AndroidStudioProjects/LayarTancep/feature/splashscreen/src/main/AndroidManifest.xml:6:13-49
+10            android:exported="true"
+10-->/Users/itdag/AndroidStudioProjects/LayarTancep/feature/splashscreen/src/main/AndroidManifest.xml:7:13-36
+11            android:theme="@style/LayarTancep.NoActionBar" >
+11-->/Users/itdag/AndroidStudioProjects/LayarTancep/feature/splashscreen/src/main/AndroidManifest.xml:8:13-59
+12            <intent-filter>
+12-->/Users/itdag/AndroidStudioProjects/LayarTancep/feature/splashscreen/src/main/AndroidManifest.xml:9:13-12:29
+13                <action android:name="android.intent.action.MAIN" />
+13-->/Users/itdag/AndroidStudioProjects/LayarTancep/feature/splashscreen/src/main/AndroidManifest.xml:10:17-69
+13-->/Users/itdag/AndroidStudioProjects/LayarTancep/feature/splashscreen/src/main/AndroidManifest.xml:10:25-66
+14
+15                <category android:name="android.intent.category.LAUNCHER" />
+15-->/Users/itdag/AndroidStudioProjects/LayarTancep/feature/splashscreen/src/main/AndroidManifest.xml:11:17-77
+15-->/Users/itdag/AndroidStudioProjects/LayarTancep/feature/splashscreen/src/main/AndroidManifest.xml:11:27-74
+16            </intent-filter>
+17        </activity>
+18    </application>
+19
+20</manifest>

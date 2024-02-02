@@ -57,7 +57,7 @@
                         android:id="@+id/tv_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="10dp"
                         android:text="@string/app_name"
                         android:textSize="28sp"
                         android:textStyle="bold" />
@@ -72,63 +72,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="16dp"
-                            android:layout_marginBottom="8dp"
                             android:text="@string/app_name"
                             android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/tv_vote"
-                            android:layout_width="35dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            android:background="@drawable/bg_outline_grey"
+                            android:drawablePadding="4dp"
+                            android:drawableStart="@drawable/ic_heart_circle"
                             android:gravity="center"
-                            android:text="8.4"
+                            tools:text="8.4"
                             android:textAlignment="center"
                             android:textSize="12sp" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/ll_genre_movie"
+                    <TextView
+                        android:id="@+id/tv_genre_movie"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tv_genre_one"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/app_name"
-                            android:textSize="12sp" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginHorizontal="5dp"
-                            android:src="@drawable/bg_dot_detail" />
-
-                        <TextView
-                            android:id="@+id/tv_genre_two"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/app_name"
-                            android:textSize="12sp" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginHorizontal="5dp"
-                            android:src="@drawable/bg_dot_detail" />
-
-                        <TextView
-                            android:id="@+id/tv_genre_three"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/app_name"
-                            android:textSize="12sp" />
-                    </LinearLayout>
+                        android:textColor="@color/yellow_500"
+                        tools:text="@string/app_name"
+                        android:textSize="12sp" />
                 </LinearLayout>
             </FrameLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>

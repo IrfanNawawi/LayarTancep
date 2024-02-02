@@ -1,0 +1,2 @@
+id.heycoding.splashscreen
+layout activity_splash_screen

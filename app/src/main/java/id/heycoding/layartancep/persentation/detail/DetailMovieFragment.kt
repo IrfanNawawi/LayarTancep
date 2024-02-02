@@ -1,11 +1,14 @@
 package id.heycoding.layartancep.persentation.detail
 
+import android.R.attr.name
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,6 +20,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import id.heycoding.layartancep.R
 import id.heycoding.layartancep.databinding.FragmentDetailMovieBinding
 import id.heycoding.layartancep.domain.model.credit.Credits
 import id.heycoding.layartancep.domain.model.detail.DetailMovies
@@ -171,7 +175,7 @@ class DetailMovieFragment : Fragment(), DetailMovieCallback {
 
     private fun setupUIDetail(detailList: List<DetailMovies>) {
         fragmentDetailMovieFragment?.apply {
-            detailList.forEach {
+            detailList.forEach { it ->
                 val poster: String =
                     Constants.BASE_URL_IMG_TMDB + "w1280" + it.backdropPath
                 Glide.with(requireContext()).load(poster).into(imgBanner)
@@ -180,9 +184,7 @@ class DetailMovieFragment : Fragment(), DetailMovieCallback {
                 tvTime.text = Helper.fromMinutesToHHmm(it.runtime)
                 tvVote.text = it.voteAverage.toString()
                 tvOverview.text = it.overview
-                tvGenreOne.text = it.genres[0].name
-                tvGenreTwo.text = it.genres[1].name
-                tvGenreThree.text = it.genres[2].name
+                tvGenreMovie.text = it.genres.joinToString (separator = Html.fromHtml("&nbsp&#11044&nbsp;")) { it.name }
             }
 
             rvMovieCast.apply {
@@ -192,7 +194,7 @@ class DetailMovieFragment : Fragment(), DetailMovieCallback {
                 clipToPadding = false
                 clipChildren = false
                 val snapHelper: SnapHelper = LinearSnapHelper()
-                snapHelper.attachToRecyclerView(rvMovieCast)
+                if (rvMovieCast.onFlingListener == null) snapHelper.attachToRecyclerView(rvMovieCast)
             }
 
             rvMovieTrailer.apply {
@@ -202,7 +204,7 @@ class DetailMovieFragment : Fragment(), DetailMovieCallback {
                 clipToPadding = false
                 clipChildren = false
                 val snapHelper: SnapHelper = LinearSnapHelper()
-                snapHelper.attachToRecyclerView(rvMovieTrailer)
+                if (rvMovieTrailer.onFlingListener == null) snapHelper.attachToRecyclerView(rvMovieTrailer)
             }
 
             rvMovieReview.apply {
@@ -212,7 +214,7 @@ class DetailMovieFragment : Fragment(), DetailMovieCallback {
                 clipToPadding = false
                 clipChildren = false
                 val snapHelper: SnapHelper = LinearSnapHelper()
-                snapHelper.attachToRecyclerView(rvMovieReview)
+                if (rvMovieReview.onFlingListener == null) snapHelper.attachToRecyclerView(rvMovieReview)
             }
         }
     }

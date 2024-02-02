@@ -1,0 +1,27 @@
+id.heycoding.home
+id bottom_nav_view
+id cl_toolbar_home_feed
+id container
+id fm_list_banner_home
+id iv_avatar_user
+id iv_icon_layartancep
+id iv_poster
+id layout_section_movie
+id pb_home
+id rv_contents
+id rv_movie_popular
+id rv_movie_upcoming
+id sv_detail
+id tv_movie_upcoming
+id tv_title_section
+id vp_banner_dashboard
+layout activity_home
+layout fragment_account
+layout fragment_dashboard
+layout fragment_genre
+layout item_movie_poster
+layout item_movie_poster_grid
+layout item_section_movie
+layout layout_home_banner_movie
+layout layout_home_section_movie
+string hello_blank_fragment
